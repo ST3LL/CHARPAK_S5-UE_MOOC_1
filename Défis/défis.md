@@ -44,7 +44,8 @@ Défi 10: En HTML, écrivez en dessous du tableau  “score =” .  Utilisez ens
 Défi 11: En JavaScript, écrire une fonction test3() qui ajoute 1 au score et qui affiche la nouvelle valeur du score dans la balise DIV située juste après le texte “score = “. Cette fonction n’a pas de valeur retournée (c’est à dire pas de return). Exécuter cette fonction test3() à chaque fois qu’on appuie sur la touche “t” du clavier. Observez qu’à chaque fois que vous appuyez sur la touche “t”, le score augmente de 1.
 
 Défi 12: En JavaScript, écrire une fonction test4() qui affiche dans la console le texte contenu dans la première case du tableau (celle qui a pour indice 0,0). Cette fonction n’a pas de valeur retournée (c’est à dire pas de return). Exécuter cette fonction test4() à chaque fois qu’on appuie sur la touche “t” du clavier. Observez qu’à chaque fois que vous appuyez sur la touche “t”, le texte de la première case du tableau est affiché. Changez le texte de la première case du tableau dans l’HTML et vérifiez que ce texte est bien affiché dans la console également, comme précédemment.
- Indice 12: vous pouvez utiliser un identifiant pour le tableau (par exemple <table id=”mytable”>)  puis var t = document.getElementById(&apos;myTable&apos;);  et enfin t.rows[0].cells[0].innerHTML
+
+Indice 12: vous pouvez utiliser un identifiant pour le tableau (par exemple <table id=”mytable”>) puis vart=document.getElementById(&apos;myTable&apos;); et enfin t.rows[0].cells[0].innerHTML
  
 Défi 13: En JavaScript, écrire une fonction test5() qui modifie le texte contenu dans la première case du tableau (celle qui a pour indice 0,0). Par exemple, au début le texte est “*” et il sera changé en “#”. Exécuter cette fonction test5() à chaque fois qu’on appuie sur la touche “t” du clavier. Utilisez l’indice 12. 
 
