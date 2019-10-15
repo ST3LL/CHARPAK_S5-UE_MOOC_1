@@ -39,14 +39,15 @@ function test6(){
 }
 
 function setValue(i,j,val){
-
+    var t = document.getElementById("tableau");
+    t.rows[i].cells[j].innerHTML = val;
 }
 
 
 function test7(){
     setValue(0,0,"p"); 
     setValue(1,1,"q");
-    setValue(2,2;"r");
+    setValue(2,2,"r");
     setValue(3,3,"s");
 }
 
@@ -70,6 +71,9 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     }
     else if (event.key == "p"){
         test6();
+    }
+    else if (event.key == "b"){
+        test7();
     }
 });
 //addEventListener est un gestionnaire d'événement
