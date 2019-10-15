@@ -72,7 +72,7 @@ function test7(){
 //DEFI 16
 function showRow(i){
     var t = document.getElementById("tableau");
-    for (var j = 0; j < t.rows.length[i]; j++)  {
+    for (var j = 0; j < 4; j++)  {
         console.log(getValue(i,j));
     }
 }
