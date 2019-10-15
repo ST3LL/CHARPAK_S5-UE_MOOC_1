@@ -17,19 +17,26 @@ function test3(){
 }
 
 function test4(){
+    case0 = document.getElementById("case0-0").innerHTML
+    console.log(case0)
+}
+
+function test5(){
     var name_case = "30";
     document.getElementById("case0-0").innerHTML = name_case;
 }
-
-
 
 function getValue(i,j){
     var t = document.getElementById("tableau");
     return t.rows[i].cells[j].innerHTML;
 }
 
-
-
+function test6(){
+    console.log(getValue(0,0));
+    console.log(getValue(1,1));
+    console.log(getValue(2,2));
+    console.log(getValue(3,3));
+}
 
 
 document.addEventListener('keydown', function(event) { //pour tout le document
@@ -47,10 +54,7 @@ document.addEventListener('keydown', function(event) { //pour tout le document
         test4();
     }
     else if (event.key == "p"){
-        console.log(getValue(0,0));
-        console.log(getValue(1,1));
-        console.log(getValue(2,2));
-        console.log(getValue(3,3));
+        test6();
     }
 });
 //addEventListener est un gestionnaire d'événement
