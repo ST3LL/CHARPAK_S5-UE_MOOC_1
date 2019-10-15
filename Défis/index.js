@@ -71,10 +71,9 @@ function test7(){
 
 //DEFI 16
 function showRow(i){
-    var t = document.getElementsById("tableau");
-    for (var j = 0; j < t.rows[i].length; j++)  {
+    var t = document.getElementById("tableau");
+    for (var j = 0; j < t.rows.length[i]; j++)  {
         console.log(getValue(i,j));
-
     }
 }
 
