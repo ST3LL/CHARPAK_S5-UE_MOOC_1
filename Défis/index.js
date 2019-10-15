@@ -81,6 +81,13 @@ function showRow(i){
     }
 }
 
+function test8(){
+    showRow(0);
+    showRow(1);
+    showRow(2);
+    showRow(3);
+}
+
 
 
 document.addEventListener('keydown', function(event) { //pour tout le document
@@ -106,6 +113,9 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     }
     else if (event.key == "b"){
         test7();
+    }
+    else if (event.key == "z"){
+        test8();
     }
 });
 //addEventListener est un gestionnaire d'événement
