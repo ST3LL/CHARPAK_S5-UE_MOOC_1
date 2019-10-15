@@ -1,31 +1,46 @@
 // javascript
+
+//DEFI 3
 console.log("coucou");
 
+
+//DEFI 8
 function test1(){
     console.log("test1");
 }
 
+
+//DEFI 9
 function test2() {
     var test = "Le titre a été modifié";
     document.getElementById("titre_principal").innerHTML =  test;
 }
 
+
+
+//DEFI 11
 function test3(){
     var count = document.getElementById("score").innerHTML;
     Number(count);
     document.getElementById("score").innerHTML = ++count; 
 }
 
+
+//DEFI 12
 function test4(){
     case0 = document.getElementById("case0-0").innerHTML
     console.log(case0)
 }
 
+
+//DEFI 13
 function test5(){
     var name_case = "30";
     document.getElementById("case0-0").innerHTML = name_case;
 }
 
+
+//DEFI 14
 function getValue(i,j){
     var t = document.getElementById("tableau");
     return t.rows[i].cells[j].innerHTML;
@@ -38,6 +53,8 @@ function test6(){
     console.log(getValue(3,3));
 }
 
+
+//DEFI 15
 function setValue(i,j,val){
     var t = document.getElementById("tableau");
     t.rows[i].cells[j].innerHTML = val;
@@ -52,7 +69,22 @@ function test7(){
 }
 
 
+//DEFI 16
+function showRow(i){
+    var ligne = document.getElementById("tableau").rows[i]; //la ligne est stockée dans une variable
+    var l_ligne = ligne.length; //on peut récupère la longueur de la ligne
+
+    while (i < l_ligne) {
+        for (var i = 0; i =< l_ligne; i++)  {
+            console.log(ligne.innerHTML);
+        }
+    }
+}
+
+
+
 document.addEventListener('keydown', function(event) { //pour tout le document
+    //DEFI 6, 7
     console.log(event.key);
     if (event.key == "t"){
         test1();
