@@ -72,13 +72,9 @@ function test7(){
 //DEFI 16
 function showRow(i){
     var t = document.getElementsById("tableau");
-    var l_ligne = t.rows.length[i]; //on peut récupère la longueur de la ligne
-    
-    while (i < l_ligne) {
-        for (j = 0; j < l_ligne; j++)  {
-            cellules = t.rows[i].cells[j].innerHTML
-            console.log(cellules)
-        }
+    for (j = 0; j < t.rows[i].length; j++)  {
+        cellules = t.rows[i].cells[j].innerHTML;
+        console.log(cellules);
     }
 }
 
