@@ -38,6 +38,18 @@ function test6(){
     console.log(getValue(3,3));
 }
 
+function setValue(i,j,val){
+
+}
+
+
+function test7(){
+    setValue(0,0,"p"); 
+    setValue(1,1,"q");
+    setValue(2,2;"r");
+    setValue(3,3,"s");
+}
+
 
 document.addEventListener('keydown', function(event) { //pour tout le document
     console.log(event.key);
