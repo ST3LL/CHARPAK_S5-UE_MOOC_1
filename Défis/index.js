@@ -73,6 +73,7 @@ function test7(){
 function showRow(i){
     var t = document.getElementsById("tableau");
     for (var j = 0; j < t.rows[i].length; j++)  {
+        console.log(j);
         cellules = t.rows[i].cells[j].innerHTML;
         console.log(cellules);
     }
