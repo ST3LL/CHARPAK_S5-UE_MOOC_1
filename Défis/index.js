@@ -85,6 +85,15 @@ function test8(){
 }
 
 
+//DEFI 17
+function showCol(j){
+    var t = document.getElementById("tableau");
+    for (var i = 0; i < 4; i++)  {
+        console.log(getValue(i,j));
+    }
+}
+
+
 
 document.addEventListener('keydown', function(event) { //pour tout le document
     //DEFI 6, 7
