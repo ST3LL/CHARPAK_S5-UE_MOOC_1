@@ -93,6 +93,12 @@ function showCol(j){
     }
 }
 
+function test9(){
+    showCol(0);
+    showCol(1);
+    showCol(2);
+    showCol(3);
+}
 
 
 document.addEventListener('keydown', function(event) { //pour tout le document
