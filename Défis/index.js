@@ -53,6 +53,9 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     else if (event.key == "c"){
         test4();
     }
+    else if (event.key == "a") {
+        test5();
+    }
     else if (event.key == "p"){
         test6();
     }
