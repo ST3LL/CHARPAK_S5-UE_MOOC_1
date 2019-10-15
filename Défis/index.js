@@ -128,5 +128,8 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     else if (event.key == "z"){
         test8();
     }
+    else if (event.key == "i"){
+        test9();
+    }
 });
 //addEventListener est un gestionnaire d'événement
