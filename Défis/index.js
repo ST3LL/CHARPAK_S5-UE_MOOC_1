@@ -71,12 +71,14 @@ function test7(){
 
 //DEFI 16
 function showRow(i){
-    var ligne = document.getElementById("tableau").rows[i]; //la ligne est stockée dans une variable
-    var l_ligne = ligne.length; //on peut récupère la longueur de la ligne
-
+    var t = document.getElementsById("tableau");
+    var ligne = document.getElementsById("tableau")[i]; //la ligne est stockée dans une variable
+    var l_ligne = t.rows.length[i]; //on peut récupère la longueur de la ligne
+    
     while (i < l_ligne) {
-        for (var i = 0; i =< l_ligne; i++)  {
-            console.log(ligne.innerHTML);
+        for (j = 0; j < l_ligne; j++)  {
+            cellules = t.rows[i].cells[j]
+            console.log(cellules)
         }
     }
 }
