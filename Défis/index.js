@@ -94,11 +94,31 @@ function showCol(j){
 }
 
 function test9(){
-    showCol(0);
+    showCol(0); 
     showCol(1);
     showCol(2);
     showCol(3);
 }
+
+
+function setRow(i,a,b,c,d){
+    for (var j = 0; j < 4; j++)  {
+        setValue(i,j,a);
+        setValue(i,j,b);
+        setValue(i,j,c);
+        setValue(i,j,d);
+    }
+}
+
+
+function test10(){
+    setRow(0,1,2,3,4);
+    setRow(1,5,6,7,8);
+    setRow(2,9,10,11,12);
+    setRow(3,13,14,15,16);
+}
+
+
 
 
 document.addEventListener('keydown', function(event) { //pour tout le document
@@ -130,6 +150,9 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     }
     else if (event.key == "i"){
         test9();
+    }
+    else if (event.key == "w"){
+        test10();
     }
 });
 //addEventListener est un gestionnaire d'événement
