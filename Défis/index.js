@@ -28,8 +28,8 @@ function test3(){
 
 //DEFI 12
 function test4(){
-    case0 = document.getElementById("case0-0").innerHTML
-    console.log(case0)
+    case0 = document.getElementById("case0-0").innerHTML;
+    console.log(case0);
 }
 
 
