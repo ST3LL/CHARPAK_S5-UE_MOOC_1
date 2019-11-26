@@ -118,40 +118,107 @@ function test10(){
 }
 
 
+//DEFI 19
+var tab = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+    ];
+
+
+function init(){
+    for (var i = 0; i <= 3; i++){
+        for (var j = 0; j <= 3; j++){
+            setValue(i, j, tab[i][j]);
+        }
+    }
+}
+
+
+function test11(){
+    init(i, j, tab[i][j]);
+}
+
+
+//DEFI 20
+function getRandomInt(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random()*(max - min + 1)) + min;
+}
+
+
+function test12(min, max){
+    var a = getRandomInt(min, max);
+    var b = getRandomInt(min, max);
+    setValue(a, b, "@")
+}
+
+
+//DEFI 21
+function getRandom2or4(){
+    var a = getRandomInt(0, 3);
+    var b = getRandomInt(0, 3);
+    var c = getRandomInt(0, 100);
+    if (c <= 80) {
+        setValue(a, b, 2);
+    }
+    else {
+        setValue(a, b, 4);
+    }
+}
+
+
+//DEFI 22
+function test13(){
+    getRandom2or4();
+    getRandom2or4();
+}
+
 
 
 document.addEventListener('keydown', function(event) { //pour tout le document
     //DEFI 6, 7
     console.log(event.key);
-    if (event.key == "t"){
+    if (event.key == "a"){
         test1();
     }
-    else if (event.key == "y") {
+    else if (event.key == "z") {
         test2(); // change title
     }
     else if (event.key == "e") {
         test3();
     }
-    else if (event.key == "c"){
+    else if (event.key == "r"){
         test4();
     }
-    else if (event.key == "a") {
+    else if (event.key == "t") {
         test5();
     }
-    else if (event.key == "p"){
+    else if (event.key == "y"){
         test6();
     }
-    else if (event.key == "b"){
+    else if (event.key == "u"){
         test7();
     }
-    else if (event.key == "z"){
+    else if (event.key == "i"){
         test8();
     }
-    else if (event.key == "i"){
+    else if (event.key == "o"){
         test9();
     }
-    else if (event.key == "w"){
+    else if (event.key == "p"){
         test10();
+    }
+    else if (event.key == "q"){
+        test11();
+    }
+    else if (event.key == "s"){
+        test12(0, 3);
+    }
+    else if (event.key == "d"){
+        test13();
     }
 });
 //addEventListener est un gestionnaire d'événement
