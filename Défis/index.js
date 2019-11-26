@@ -101,15 +101,14 @@ function test9(){
 }
 
 
+//DEFI 18
 function setRow(i,a,b,c,d){
-    for (var j = 0; j < 4; j++)  {
-        setValue(i,j,a);
-        setValue(i,j,b);
-        setValue(i,j,c);
-        setValue(i,j,d);
-    }
+    var t = document.getElementById("tableau");
+        t.rows[i].cells[0].innerHTML = a;
+        t.rows[i].cells[1].innerHTML = b;
+        t.rows[i].cells[2].innerHTML = c;
+        t.rows[i].cells[3].innerHTML = d;
 }
-
 
 function test10(){
     setRow(0,1,2,3,4);
