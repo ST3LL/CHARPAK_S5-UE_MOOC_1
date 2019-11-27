@@ -137,7 +137,7 @@ function init(){
 
 
 function test11(){
-    init(i, j, tab[i][j]);
+    init();
 }
 
 
