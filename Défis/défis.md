@@ -60,3 +60,33 @@ Défi 17: En JavaScript, écrire une fonction showCol(j) qui va afficher le text
 Défi 18: En JavaScript, écrire une fonction setRow(i,a,b,c,d) qui va mettre, pour la ligne i, les quatre valeurs a b c d respectivement dans les cases ayant pour indice i,0 puis  i,1 puis  i,2 puis i,3 . Pour cela, vous utiliserez la fonction setValue(i,j,val). Ecrire une fonction test10() qui va tester cette fonction avec setRow(0,1,2,3,4) setRow(1,5,6,7,8) setRow(2,9,10,11,12) et setRow(3,13,14,15,16) et qui sera exécutée à chaque fois qu’on appuie sur la touche “t” du clavier. 
 
 SCREENCAST Défi 18: enregistrer un screencast avec scrimba qui explique le Défi 18 en montrant ce que vous avez fait pour que ce défi fonctionne dans le fichier HTML et surtout dans le fichier JavaScript. Publiez-le et envoyez le lien URL de partage de ce screencast sur le forumulaire https://forms.gle/D1fMdqtdam53JCiXA 
+
+Défi 19: Écrire une fonction test11() qui appelle la fonction init() définie ci-dessous. test11() sera exécutée à chaque fois qu’on appuie sur la touche “t” du clavier. Vérifiez que vous voyez en HTML les même valeurs que ceux de la matrice tab définie dans init().
+function init(){
+    var tab = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16]
+    ];
+    
+    for(i=0;i<=3;i++){
+        for(j=0;j<=3;j++){
+            setValue(i,j,tab[i][j]); 
+        }
+    }
+}
+
+Défi 20: Écrire une fonction test12() qui va utiliser deux fois la fonction getRandomInt pour générer aléatoirement deux entiers entre 0 (inclus) et 3 (inclus). La fonction getRandomInt(min,max) renvoie justement un entier aléatoire entre min (inclus) et max (inclus). Utiliser ces deux entiers aléatoires (par exemple i,j) pour afficher le caractère @ dans la case i,j (en utilisant la fonction setValue(i,j,”@” ) ). Comme i et j sont aléatoire, le caractère @ va s’afficher dans une case aléatoire. Appuyer sur la touche “t” du clavier déclenche test12()
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+Défi 21: Écrire une fonction getRandom2or4(percent) qui renvoie la valeur 2 dans percent % des cas et la valeur 4 dans (100 - percent)% des cas. Par exemple, si percent=80 cette fonction va renvoyer 2 dans 80% des cas et 4 dans 20% des cas. 
+indice 21: La fonction getRandom2or4(percent) va utiliser getRandomInt pour générer un entier aléatoire avec une borne min égale à 0 et une borne max égale à 100. Si l’entier est strictement inférieur à percent la fonction renvoie 2 sinon 4.
+
+Défi 22: Écrire une fonction startGame() déclenchée avec la touche “s”, qui utilise getRandom2or4 et getRandomInt pour initialiser le jeu 2048. Pour cela, cette fonction doit choisir deux cases aléatoirement (réutilisez la méthode du défi 20). Tant que les deux cases sont égales, il faut choisir une nouvelle case jusqu’à ce que les deux cases soient différentes. Une fois que les deux cases sont différentes, il faut mettre une valeur 2 dans 85% des cas et une valeur 4 dans 15% des cas pour une case et la valeur 2 dans 86% des cas et la valeur 4 dans 14% des cas pour l’autre case.
+
