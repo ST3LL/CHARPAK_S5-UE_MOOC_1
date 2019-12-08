@@ -45,29 +45,46 @@ function deplacer_gauche(t){
     //var t = [t[i][0], t[i][1], t[i][2], t[i][3]];
     for (var i = 0; i <= 3; i++)
     {
-        if ((t[i][0] == t[i][1])) and ((t[i][2] == t[i][3]))
+        if (t[i][0] == t[i][1])
         {
-            t = [2*t[i][0], 2*t[i][2], 0, 0];
+            if (t[i][2] == t[i][3])
+            {
+                t = [2*t[i][0], 2*t[i][2], 0, 0];
+            }
         }
-        if ((t[i][0] == t[i][1])) and ((t[i][2] != t[i][3]))
+        if (t[i][0] == t[i][1]) 
         {
-            t = [2*t[i][0], t[i][2], t[i][3], 0];
+            if (t[i][2] != t[i][3])
+            {
+                t = [2*t[i][0], t[i][2], t[i][3], 0];
+            }
         }
-        if ((t[i][0] != t[i][1])) and ((t[i][2] == t[i][3]))
+        if (t[i][0] != t[i][1])
         {
-            t = [t[i][0], t[i][1], 2*t[i][2], 0];
-        } 
-        if ((t[i][0] != t[i][1])) and ((t[i][2] != t[i][3])) and ((t[i][1] == t[i][2]))
+            if (t[i][2] == t[i][3])
+            {
+                t = [t[i][0], t[i][1], 2*t[i][2], 0];
+            } 
+        }
+        if (t[i][0] != t[i][1])
         {
-            t = [t[i][0], 2*t[i][1], t[i][3], 0];
-        } 
-        if ((t[i][0] != t[i][1]) and (t[i][2] != t[i][3]))
+            if (t[i][2] != t[i][3])
+            {
+                t = [t[i][0], 2*t[i][1], t[i][3], 0];
+            }
+        }    
+        if (t[i][0] != t[i][1])
         {
-            t = [t[i][0], t[i][1], t[i][2], t[i][3]];
+            if (t[i][2] != t[i][3])
+            {
+                t = [t[i][0], t[i][1], t[i][2], t[i][3]];
+            }
         }    
     }
     return t;
 }
+
+
 
 
 function test3(){
@@ -83,15 +100,20 @@ function fusionner(){
 
 */
 
+function start(){
+    init();
+    getRandom2or4();
+    getRandom2or4();
+}
+
+
 document.addEventListener('keydown', function(event) { 
     console.log(event.key);
     if (event.key == "ArrowLeft"){
-        deplacer(tab);
+        deplacer_gauche(tab);
     }
     else if (event.key == "a"){
         init();
-        getRandom2or4();
-        getRandom2or4();
+        start();
     }
-
 });
