@@ -119,15 +119,16 @@ function test10(){
 
 
 //DEFI 19
-var tab = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 16]
-    ];
+
 
 
 function init(){
+    var tab = [
+    ['*','*','*','*'],
+    ['*','*','*','*'],
+    ['*','*','*','*'],
+    ['*','*','*','*']
+    ];
     for (var i = 0; i <= 3; i++){
         for (var j = 0; j <= 3; j++){
             setValue(i, j, tab[i][j]);
@@ -171,12 +172,62 @@ function getRandom2or4(){
 
 
 //DEFI 22
-function test13(){
+function startGame(){
     getRandom2or4();
     getRandom2or4();
 }
 
 
+//DEFI 23
+function isEmpty(i, j){
+    var tab = getValue(i,j);
+    if (tab == '*'){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+
+}
+
+
+function test13(){
+    init();
+    startGame();
+    for (var i = 0; i <= 3; i++){
+        for (var j = 0; j <= 3; j++){
+            if (isEmpty(i,j) == 1){
+                console.log("la case ["+i+"]["+j+"] est vide");
+            }
+            else {
+                console.log("la case ["+i+"]["+j+"] est remplie");
+            }
+        }
+    }
+}
+
+
+//DEFI 24
+function moveRight(i){
+    var ligne = ['*','*','*','*'];
+    var l_ligne = lenght(ligne);
+    for (var j = 0; j <= 3; j++){
+        ligne[j] = getValue(i,j);
+    }
+    var nouvelle_ligne = ligne[j].filter(function(x){return x!=0});
+    var l_n_ligne = lenght(l_n_ligne);
+    var reste = l_ligne - l_n_ligne;
+    for (var e = 0, e <= reste, e++){
+        var t = []
+    }
+    nouvelle_ligne = nouvelle_ligne.push(0,0)
+    //ligne = [0, 2, 0, 2]
+
+}
+
+function test14(){
+    moveRight(1);
+}
 
 document.addEventListener('keydown', function(event) { //pour tout le document
     //DEFI 6, 7
@@ -218,7 +269,13 @@ document.addEventListener('keydown', function(event) { //pour tout le document
         test12(0, 3);
     }
     else if (event.key == "d"){
+        startGame();
+    }
+    else if (event.key == "f"){
         test13();
+    }
+    else if (event.key == "g"){
+        test14();
     }
 });
 //addEventListener est un gestionnaire d'événement
