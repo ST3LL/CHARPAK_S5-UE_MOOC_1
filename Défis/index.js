@@ -210,27 +210,13 @@ function test13(){
 
 //DEFI 24
 function moveRight(i){
-    /*
-    var ligne = ['*','*','*','*'];
-    var l_ligne = ligne.length;
-    for (var j = 0; j <= 3; j++){
-        ligne[j] = getValue(i,j);
-    }
-    var nouvelle_ligne = ligne[j].filter(function(x){return x!=0});
-    var l_n_ligne = l_n_ligne.length;
-    var reste = l_ligne - l_n_ligne;
-    for (var e = 0; e <= reste; e++){
-        var t = []
-    }
-    nouvelle_ligne = nouvelle_ligne.push(0,0)
-    //ligne = [0, 2, 0, 2]
-    */
-    //var tab = [[2,0,0,0],[0,0,0,0]]
-    var tab = [Number(getValue(i,0)), Number(getValue(i,1)), Number(getValue(i,2)), Number(getValue(i,3))]
-    for (var j = 0; j <= 2; j++){
-        while ((tab[j+1] == 0) && (tab[j] > 0)){
-            tab[j+1] = tab[j];
-            tab[j] = 0;
+    var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
+    for (var k = 0; k < 4; k++){
+        for (var j = 0; j <= 2; j++){
+            if ((tab[j+1] == '*') && (tab[j] != '*')){
+                tab[j+1] = tab[j];
+                tab[j] = '*';
+            }
         }
     }
     setRow(0, tab[0], tab[1], tab[2], tab[3])
@@ -240,19 +226,127 @@ function moveRight(i){
 
 function test14(){
     init();
-    setRow(0,'2','0','2','0');
-    moveRight(0);
-    moveRight(0);
+    //setRow(0,'*','*','2','*');
+    //setRow(0,'4','*','2','*');
+    //setRow(0,'2','*','2','2');
+    setRow(0,'4','2','*','4');
     moveRight(0);
 }
 
+
+
+
+
+//DEFI 26
+function moveLeft(i){
+    var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
+    for (var k = 0; k < 4; k++){
+        for (var j = 0; j <= 3; j++){
+            if ((tab[j-1] == '*') && (tab[j] != '*')){
+                tab[j-1] = tab[j];
+                tab[j] = '*';
+            }
+        }
+    }
+    setRow(0, tab[0], tab[1], tab[2], tab[3])
+}
 
 
 function test15(){
     init();
-    setRow(0,'*','*','2','*');
+    //setRow(0,'*','*','2','*');
+    //setRow(0,'4','*','2','*');
+    //setRow(0,'2','*','2','2');
+    setRow(0,'4','2','*','4');
     moveLeft(0);
 }
+
+
+
+//DEFI 27
+function setCol(j,a,b,c,d){
+    var t = document.getElementById("tableau");
+        t.rows[0].cells[j].innerHTML = a;
+        t.rows[1].cells[j].innerHTML = b;
+        t.rows[2].cells[j].innerHTML = c;
+        t.rows[3].cells[j].innerHTML = d;
+}
+
+
+function moveUp(j){
+    var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
+    for (var k = 0; k < 4; k++){
+        for (var i = 0; i <= 3; i++){
+            if ((tab[i-1] == '*') && (tab[i] != '*')){
+                tab[i-1] = tab[j];
+                tab[i] = '*';
+            }
+        }
+    }
+    setCol(0, tab[0], tab[1], tab[2], tab[3])
+}
+
+
+
+function test16(){
+    init();
+    //setCol(0,'*','*','2','*');
+    //setCol(0,'4','*','2','*');
+    //setCol(0,'2','*','2','2');
+    setCol(0,'4','2','*','4');
+    moveUp(0);
+}
+
+
+
+function moveDown(j){
+    var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
+    for (var k = 0; k < 4; k++){
+        for (var i = 0; i <= 2; i++){
+            if ((tab[i+1] == '*') && (tab[i] != '*')){
+                tab[i+1] = tab[j];
+                tab[i] = '*';
+            }
+        }
+    }
+    setCol(0, tab[0], tab[1], tab[2], tab[3])
+}
+
+
+
+function test17(){
+    init();
+    //setCol(0,'*','*','2','*');
+    //setCol(0,'4','*','2','*');
+    //setCol(0,'2','*','2','2');
+    setCol(0,'4','2','*','4');
+    moveDown(0);
+}
+
+
+
+//DEFI 28
+function fusionRight(i){
+    var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
+    if (Number(tab[0]) == Number(tab[1])) 
+
+
+
+    var result = Number(getValue(2,3)) + Number(getValue(1,2));
+
+}
+
+
+function test18(){
+    init();
+    //setRow(0,'*','*','2','2');
+    //setRow(0,'4','4','2','2');
+    //setRow(0,'*','2','2','2');
+    setRow(0,'*','2','2','4');
+    moveRight(0);
+    fusionRight(0);
+}
+
 
 
 
@@ -303,6 +397,15 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     }
     else if (event.key == "g"){
         test14();
+    }
+    else if (event.key == "h"){
+        test15();
+    }
+    else if (event.key == "j"){
+        test16();
+    }
+    else if (event.key == "k"){
+        test17();
     }
 });
 //addEventListener est un gestionnaire d'événement
