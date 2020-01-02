@@ -207,27 +207,54 @@ function test13(){
 }
 
 
+
 //DEFI 24
 function moveRight(i){
+    /*
     var ligne = ['*','*','*','*'];
-    var l_ligne = lenght(ligne);
+    var l_ligne = ligne.length;
     for (var j = 0; j <= 3; j++){
         ligne[j] = getValue(i,j);
     }
     var nouvelle_ligne = ligne[j].filter(function(x){return x!=0});
-    var l_n_ligne = lenght(l_n_ligne);
+    var l_n_ligne = l_n_ligne.length;
     var reste = l_ligne - l_n_ligne;
-    for (var e = 0, e <= reste, e++){
+    for (var e = 0; e <= reste; e++){
         var t = []
     }
     nouvelle_ligne = nouvelle_ligne.push(0,0)
     //ligne = [0, 2, 0, 2]
-
+    */
+    //var tab = [[2,0,0,0],[0,0,0,0]]
+    var tab = [Number(getValue(i,0)), Number(getValue(i,1)), Number(getValue(i,2)), Number(getValue(i,3))]
+    for (var j = 0; j <= 2; j++){
+        while ((tab[j+1] == 0) && (tab[j] > 0)){
+            tab[j+1] = tab[j];
+            tab[j] = 0;
+        }
+    }
+    setRow(0, tab[0], tab[1], tab[2], tab[3])
 }
+
+
 
 function test14(){
-    moveRight(1);
+    init();
+    setRow(0,'2','0','2','0');
+    moveRight(0);
+    moveRight(0);
+    moveRight(0);
 }
+
+
+
+function test15(){
+    init();
+    setRow(0,'*','*','2','*');
+    moveLeft(0);
+}
+
+
 
 document.addEventListener('keydown', function(event) { //pour tout le document
     //DEFI 6, 7
