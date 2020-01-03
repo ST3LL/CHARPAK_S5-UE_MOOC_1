@@ -327,13 +327,49 @@ function test17(){
 
 //DEFI 28
 function fusionRight(i){
-    var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
-    if (Number(tab[0]) == Number(tab[1])) 
-
-
-
-    var result = Number(getValue(2,3)) + Number(getValue(1,2));
-
+    var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
+    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) != Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+        tab[0] = tab[0];
+        tab[1] = tab[1];
+        tab[2] = tab[2];
+        tab[3] = tab[3];
+    }
+    if ((Number(tab[0]) == Number(tab[1])) && (Number(tab[1]) != Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+        tab[0] = '*';
+        tab[1] = Number(tab[0]) + Number(tab[1]);
+        tab[2] = tab[2];
+        tab[3] = tab[3];
+    }
+    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+        tab[0] = '*';
+        tab[1] = tab[0];
+        tab[2] = Number(tab[1]) + Number(tab[2]);
+        tab[3] = tab[3];
+    }
+    if ((Number(tab[0]) == Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) == Number(tab[3]))){
+        tab[0] = '*';
+        tab[1] = '*';
+        tab[2] = Number(tab[0]) + Number(tab[1]);
+        tab[3] = Number(tab[2]) + Number(tab[3]);
+    }
+    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+        tab[0] = '*';
+        tab[1] = tab[0];
+        tab[2] = Number(tab[1]) + Number(tab[2]);
+        tab[3] = tab[3];
+    }
+    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) == Number(tab[3]))){
+        tab[0] = '*';
+        tab[1] = tab[0];
+        tab[2] = tab[2];
+        tab[3] = Number(tab[2]) + Number(tab[3]);
+    }
+    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) != Number(tab[2])) && (Number(tab[2]) == Number(tab[3]))){
+        tab[0] = '*';
+        tab[1] = tab[0];
+        tab[2] = tab[1];
+        tab[3] = Number(tab[2]) + Number(tab[3]);
+    }
 }
 
 
