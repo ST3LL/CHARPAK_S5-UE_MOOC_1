@@ -328,43 +328,43 @@ function test17(){
 //DEFI 28
 function fusionRight(i){
     var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
-    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) != Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+    if ((tab[0] != tab[1]) && (tab[1] != tab[2]) && (tab[2] != tab[3])){
         tab[0] = tab[0];
         tab[1] = tab[1];
         tab[2] = tab[2];
         tab[3] = tab[3];
     }
-    if ((Number(tab[0]) == Number(tab[1])) && (Number(tab[1]) != Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+    if ((tab[0] == tab[1]) && (tab[1] !=tab[2]) && (tab[2] !=tab[3])){
         tab[0] = '*';
         tab[1] = Number(tab[0]) + Number(tab[1]);
         tab[2] = tab[2];
         tab[3] = tab[3];
     }
-    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+    if ((tab[0] != tab[1]) && (tab[1] == tab[2]) && (tab[2] != tab[3])){
         tab[0] = '*';
         tab[1] = tab[0];
         tab[2] = Number(tab[1]) + Number(tab[2]);
         tab[3] = tab[3];
     }
-    if ((Number(tab[0]) == Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) == Number(tab[3]))){
+    if ((tab[0] == tab[1]) && (tab[1] == tab[2]) && (tab[2] == tab[3])){
         tab[0] = '*';
         tab[1] = '*';
         tab[2] = Number(tab[0]) + Number(tab[1]);
         tab[3] = Number(tab[2]) + Number(tab[3]);
     }
-    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) != Number(tab[3]))){
+    if ((tab[0] != tab[1]) && (tab[1] == tab[2]) && (tab[2] != tab[3])){
         tab[0] = '*';
         tab[1] = tab[0];
         tab[2] = Number(tab[1]) + Number(tab[2]);
         tab[3] = tab[3];
     }
-    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) == Number(tab[2])) && (Number(tab[2]) == Number(tab[3]))){
+    if ((tab[0] != tab[1]) && (tab[1] == tab[2]) && (tab[2] == tab[3])){
         tab[0] = '*';
         tab[1] = tab[0];
         tab[2] = tab[2];
         tab[3] = Number(tab[2]) + Number(tab[3]);
     }
-    if ((Number(tab[0]) != Number(tab[1])) && (Number(tab[1]) != Number(tab[2])) && (Number(tab[2]) == Number(tab[3]))){
+    if ((tab[0] != tab[1]) && (tab[1] != tab[2]) && (tab[2] == tab[3])){
         tab[0] = '*';
         tab[1] = tab[0];
         tab[2] = tab[1];
@@ -379,7 +379,6 @@ function test18(){
     //setRow(0,'4','4','2','2');
     //setRow(0,'*','2','2','2');
     setRow(0,'*','2','2','4');
-    moveRight(0);
     fusionRight(0);
 }
 
@@ -442,6 +441,9 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     }
     else if (event.key == "k"){
         test17();
+    }
+    else if (event.key == "l"){
+        test18();
     }
 });
 //addEventListener est un gestionnaire d'événement
