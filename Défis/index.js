@@ -330,14 +330,16 @@ function fusionRight(i){
     var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
     var l = tab.length;
     if (l != 0) {
-        for (var  = 3; j <= 0; j--) {
+        for (var j = 3; j <= 0; j--) {
             if (tab[j-1] == tab[j]){
                 tab[j] = Number(tab[j]) + Number(tab[j-1]);
             }
         }
     } 
-    if (tab.length < len){
-        tab.push('*');
+    if (tab.length < l){
+        for (var k = 0; k > (l - tab.length); k++){
+            tab.unshift('*');
+        }
     }
 }
 
