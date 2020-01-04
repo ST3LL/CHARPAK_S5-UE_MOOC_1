@@ -219,7 +219,7 @@ function moveRight(i){
             }
         }
     }
-    setRow(0, tab[0], tab[1], tab[2], tab[3])
+    setRow(i, tab[0], tab[1], tab[2], tab[3])
 }
 
 
@@ -248,7 +248,7 @@ function moveLeft(i){
             }
         }
     }
-    setRow(0, tab[0], tab[1], tab[2], tab[3])
+    setRow(i, tab[0], tab[1], tab[2], tab[3])
 }
 
 
@@ -283,7 +283,7 @@ function moveUp(j){
             }
         }
     }
-    setCol(0, tab[0], tab[1], tab[2], tab[3])
+    setCol(j, tab[0], tab[1], tab[2], tab[3])
 }
 
 
@@ -309,7 +309,7 @@ function moveDown(j){
             }
         }
     }
-    setCol(0, tab[0], tab[1], tab[2], tab[3])
+    setCol(j, tab[0], tab[1], tab[2], tab[3])
 }
 
 
@@ -328,47 +328,16 @@ function test17(){
 //DEFI 28
 function fusionRight(i){
     var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
-    if ((tab[0] != tab[1]) && (tab[1] != tab[2]) && (tab[2] != tab[3])){
-        tab[0] = tab[0];
-        tab[1] = tab[1];
-        tab[2] = tab[2];
-        tab[3] = tab[3];
-    }
-    if ((tab[0] == tab[1]) && (tab[1] !=tab[2]) && (tab[2] !=tab[3])){
-        tab[0] = '*';
-        tab[1] = Number(tab[0]) + Number(tab[1]);
-        tab[2] = tab[2];
-        tab[3] = tab[3];
-    }
-    if ((tab[0] != tab[1]) && (tab[1] == tab[2]) && (tab[2] != tab[3])){
-        tab[0] = '*';
-        tab[1] = tab[0];
-        tab[2] = Number(tab[1]) + Number(tab[2]);
-        tab[3] = tab[3];
-    }
-    if ((tab[0] == tab[1]) && (tab[1] == tab[2]) && (tab[2] == tab[3])){
-        tab[0] = '*';
-        tab[1] = '*';
-        tab[2] = Number(tab[0]) + Number(tab[1]);
-        tab[3] = Number(tab[2]) + Number(tab[3]);
-    }
-    if ((tab[0] != tab[1]) && (tab[1] == tab[2]) && (tab[2] != tab[3])){
-        tab[0] = '*';
-        tab[1] = tab[0];
-        tab[2] = Number(tab[1]) + Number(tab[2]);
-        tab[3] = tab[3];
-    }
-    if ((tab[0] != tab[1]) && (tab[1] == tab[2]) && (tab[2] == tab[3])){
-        tab[0] = '*';
-        tab[1] = tab[0];
-        tab[2] = tab[2];
-        tab[3] = Number(tab[2]) + Number(tab[3]);
-    }
-    if ((tab[0] != tab[1]) && (tab[1] != tab[2]) && (tab[2] == tab[3])){
-        tab[0] = '*';
-        tab[1] = tab[0];
-        tab[2] = tab[1];
-        tab[3] = Number(tab[2]) + Number(tab[3]);
+    var l = tab.length;
+    if (l != 0) {
+        for (var  = 3; j <= 0; j--) {
+            if (tab[j-1] == tab[j]){
+                tab[j] = Number(tab[j]) + Number(tab[j-1]);
+            }
+        }
+    } 
+    if (tab.length < len){
+        tab.push('*');
     }
 }
 
