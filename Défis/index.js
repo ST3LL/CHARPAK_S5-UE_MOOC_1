@@ -119,9 +119,6 @@ function test10(){
 
 
 //DEFI 19
-
-
-
 function init(){
     var tab = [
     ['*','*','*','*'],
@@ -278,7 +275,7 @@ function moveUp(j){
     for (var k = 0; k < 4; k++){
         for (var i = 0; i <= 3; i++){
             if ((tab[i-1] == '*') && (tab[i] != '*')){
-                tab[i-1] = tab[j];
+                tab[i-1] = tab[i];
                 tab[i] = '*';
             }
         }
@@ -302,9 +299,9 @@ function test16(){
 function moveDown(j){
     var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
     for (var k = 0; k < 4; k++){
-        for (var i = 0; i <= 2; i++){
+        for (var i = 0; i <= 3; i++){
             if ((tab[i+1] == '*') && (tab[i] != '*')){
-                tab[i+1] = tab[j];
+                tab[i+1] = tab[i];
                 tab[i] = '*';
             }
         }
@@ -327,14 +324,16 @@ function test17(){
 
 //DEFI 28
 function fusionRight(i){
-    var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
+    var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)];
     var l = tab.length;
     if (l != 0) {
         for (var j = 3; j > 0; j--) {
             if (Number(tab[j-1]) == Number(tab[j])){
                 tab[j] = Number(tab[j]) + Number(tab[j-1]);
                 tab[j-1] = '*';
+                setRow(i, tab[0], tab[1], tab[2], tab[3]);
                 moveRight(i);
+                tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)];
             }
         }
     } 
@@ -352,37 +351,49 @@ function test18(){
     //setRow(0,'*','*','2','2');
     //setRow(0,'4','4','2','2');
     //setRow(0,'*','2','2','2');
-    setRow(0,'2','*','2','4');
+    //setRow(0,'2','*','2','4');
+    setRow(0,'4','2','*','2');
     moveRight(0);
     fusionRight(0);
 }
 
 
-
-
+//DEFI 29
 function fusionLeft(i){
-    var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
+    var tab = [getValue(i,3), getValue(i,2), getValue(i,1), getValue(i,0)];
     var l = tab.length;
     if (l != 0) {
-        for (var j = 0; j > 0; j++) {
-            if (Number(tab[j+1]) == Number(tab[j])){
-                tab[j] = Number(tab[j]) + Number(tab[j+1]);
-                tab[j+1] = '*';
+        for (var j = 3; j > 0; j--) {
+            if (Number(tab[j-1]) == Number(tab[j])){
+                tab[j] = Number(tab[j]) + Number(tab[j-1]);
+                tab[j-1] = '*';
+                setRow(i, tab[3], tab[2], tab[1], tab[0]);
                 moveLeft(i);
+                tab = [getValue(i,3), getValue(i,2), getValue(i,1), getValue(i,0)];
             }
         }
     } 
     if (tab.length < l){
         for (var k = 0; k > (l - tab.length); k++){
-            tab.push('*');
+            tab.unshift('*');
         }
     }
-    setRow(i, tab[0], tab[1], tab[2], tab[3])
+    setRow(i, tab[3], tab[2], tab[1], tab[0]);
 }
 
 
 
+function test19(){
+    init();
+    //setRow(0,'*','*','2','2');
+    //setRow(0,'4','4','2','2');
+    //setRow(0,'*','2','2','2');
+    setRow(0,'2','*','2','4');
+    moveLeft(0);
+    fusionLeft(0);
+}
 
+//DEFI 30
 function fusionUp(j){
     var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
     var l = tab.length;
@@ -391,7 +402,9 @@ function fusionUp(j){
             if (Number(tab[i+1]) == Number(tab[i])){
                 tab[i] = Number(tab[i]) + Number(tab[i+1]);
                 tab[i+1] = '*';
-                moveUp(i);
+                setCol(j, tab[0], tab[1], tab[2], tab[3])
+                moveUp(j);
+                tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
             }
         }
     } 
@@ -401,6 +414,18 @@ function fusionUp(j){
         }
     }
     setCol(j, tab[0], tab[1], tab[2], tab[3])
+}
+
+
+
+function test20(){
+    init();
+    //setRow(0,'*','*','2','2');
+    //setRow(0,'4','4','2','2');
+    //setRow(0,'*','2','2','2');
+    setCol(0,'2','*','2','4');
+    moveUp(0);
+    fusionUp(0);
 }
 
 
@@ -412,7 +437,9 @@ function fusionDown(j){
             if (Number(tab[i-1]) == Number(tab[i])){
                 tab[i] = Number(tab[i]) + Number(tab[i-1]);
                 tab[i-1] = '*';
-                moveDown(i);
+                setCol(j, tab[0], tab[1], tab[2], tab[3])
+                moveDown(j);
+                tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
             }
         }
     } 
@@ -424,6 +451,16 @@ function fusionDown(j){
     setCol(j, tab[0], tab[1], tab[2], tab[3])
 }
 
+
+function test21(){
+    init();
+    //setRow(0,'*','*','2','2');
+    //setRow(0,'4','4','2','2');
+    //setRow(0,'*','2','2','2');
+    setCol(0,'2','*','2','4');
+    moveDown(0);
+    fusionDown(0);
+}
 
 
 document.addEventListener('keydown', function(event) { //pour tout le document
@@ -486,5 +523,15 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     else if (event.key == "l"){
         test18();
     }
+    else if (event.key == "m"){
+        test19();
+    }
+    else if (event.key == "w"){
+        test20();
+    }
+    else if (event.key == "x"){
+        test21();
+    }
+
 });
 //addEventListener est un gestionnaire d'événement
