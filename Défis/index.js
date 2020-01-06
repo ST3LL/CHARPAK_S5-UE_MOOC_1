@@ -153,18 +153,24 @@ function test12(min, max){
     setValue(a, b, "@")
 }
 
+function random2or4()
+{
+    var c = getRandomInt(0, 100);
+    if (c <= 80)
+    {
+        return 2;
+    }
+    else
+    {
+        return 4;
+    }
+}
 
 //DEFI 21
 function getRandom2or4(){
     var a = getRandomInt(0, 3);
     var b = getRandomInt(0, 3);
-    var c = getRandomInt(0, 100);
-    if (c <= 80) {
-        setValue(a, b, 2);
-    }
-    else {
-        setValue(a, b, 4);
-    }
+    setValue(a, b, random2or4());
 }
 
 
@@ -206,17 +212,21 @@ function test13(){
 
 
 //DEFI 24
-function moveRight(i){
+function moveRight(i)
+{
+    var hasChanged = 0;
     var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
     for (var k = 0; k < 4; k++){
         for (var j = 0; j <= 2; j++){
             if ((tab[j+1] == '*') && (tab[j] != '*')){
                 tab[j+1] = tab[j];
                 tab[j] = '*';
+                hasChanged++;
             }
         }
     }
-    setRow(i, tab[0], tab[1], tab[2], tab[3])
+    setRow(i, tab[0], tab[1], tab[2], tab[3]);
+    return hasChanged;
 }
 
 
@@ -324,6 +334,7 @@ function test17(){
 
 //DEFI 28
 function fusionRight(i){
+    var hasChanged = 0;
     var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)];
     var l = tab.length;
     if (l != 0) {
@@ -334,6 +345,7 @@ function fusionRight(i){
                 setRow(i, tab[0], tab[1], tab[2], tab[3]);
                 moveRight(i);
                 tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)];
+                hasChanged++;
             }
         }
     } 
@@ -342,7 +354,8 @@ function fusionRight(i){
             tab.unshift('*');
         }
     }
-    setRow(i, tab[0], tab[1], tab[2], tab[3])
+    setRow(i, tab[0], tab[1], tab[2], tab[3]);
+    return hasChanged;
 }
 
 
@@ -395,16 +408,16 @@ function test19(){
 
 //DEFI 30
 function fusionUp(j){
-    var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
+    var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)];
     var l = tab.length;
     if (l != 0) {
-        for (var i = 0; i > 0; i++) {
+        for (var i = 0; i < 2; i++) {
             if (Number(tab[i+1]) == Number(tab[i])){
                 tab[i] = Number(tab[i]) + Number(tab[i+1]);
                 tab[i+1] = '*';
-                setCol(j, tab[0], tab[1], tab[2], tab[3])
+                setCol(j, tab[0], tab[1], tab[2], tab[3]);
                 moveUp(j);
-                tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
+                tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)];
             }
         }
     } 
@@ -413,7 +426,7 @@ function fusionUp(j){
             tab.push('*');
         }
     }
-    setCol(j, tab[0], tab[1], tab[2], tab[3])
+    setCol(j, tab[0], tab[1], tab[2], tab[3]);
 }
 
 
@@ -461,6 +474,121 @@ function test21(){
     moveDown(0);
     fusionDown(0);
 }
+
+
+function righti(i){
+  var hasChanged = 0;
+  hasChanged += moveRight(i);
+  hasChanged += fusionRight(i);
+  hasChanged += moveRight(i);
+  return hasChanged;
+}
+
+function right()
+{
+  var hasChanged = 0;
+    for(var i=0; i<=3; i++)
+    {
+       hasChanged += righti(i);
+    }
+  return hasChanged;
+}
+
+
+function lefti(i){
+  var hasChanged = 0;
+  hasChanged += moveLeft(i);
+  hasChanged += fusionLeft(i);
+  hasChanged += moveLeft(i);
+  return hasChanged;
+}
+
+function left()
+{
+  var hasChanged = 0;
+    for(var i=0; i<=3; i++)
+    {
+       hasChanged += lefti(i);
+    }
+  return hasChanged;
+}
+
+
+
+function upi(i){
+  var hasChanged = 0;
+  hasChanged += moveUp(i);
+  hasChanged += fusionUp(i);
+  hasChanged += moveUp(i);
+  return hasChanged;
+}
+
+function up()
+{
+  var hasChanged = 0;
+    for(var i=0; i<=3; i++)
+    {
+       hasChanged += upi(i);
+    }
+  return hasChanged;
+}
+
+
+function downi(i){
+  var hasChanged = 0;
+  hasChanged += moveDown(i);
+  hasChanged += fusionDown(i);
+  hasChanged += moveDown(i);
+  return hasChanged;
+}
+
+function down()
+{
+  var hasChanged = 0;
+    for(var i=0; i<=3; i++)
+    {
+       hasChanged += upi(i);
+    }
+  return hasChanged;
+}
+
+
+
+function hasEmpty()
+{
+    var tmp = 0;
+    for (var i = 0; i < 4; i++)
+    {
+        for (var j = 0; j < 4; j++)
+        {
+            tmp += isEmpty(i,j)
+        }
+    }
+    if(tmp != 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+function getEmpty()
+{
+    if(hasEmpty() == 1)
+    {
+        var i = getRandomInt(0, 3);
+        var j = getRandomInt(0, 3);
+        while(isEmpty(i,j) == 0)
+        {
+            i = getRandomInt(0, 3);
+            j = getRandomInt(0, 3);
+        }
+        return [i, j];
+    }
+}
+
 
 
 document.addEventListener('keydown', function(event) { //pour tout le document
@@ -532,6 +660,59 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     else if (event.key == "x"){
         test21();
     }
+    else if (event.key == "ArrowRight"){
+        if(right() == 0)
+        {
+            console.log("Pas de mouvement et pas de fusion !");
+        }
+        else
+        {
+            var coord = getEmpty();
+            var i = coord[0];
+            var j = coord[1];
+            setValue(i, j, random2or4())
+        }
+    }
+    else if (event.key == "ArrowLeft"){
+        if(left() == 0)
+        {
+            console.log("Pas de mouvement et pas de fusion !");
+        }
+        else
+        {
+            var coord = getEmpty();
+            var i = coord[0];
+            var j = coord[1];
+            setValue(i, j, random2or4())
+        }
+    }
+    else if (event.key == "ArrowUp"){
+        if(up() == 0)
+        {
+            console.log("Pas de mouvement et pas de fusion !");
+        }
+        else
+        {
+            var coord = getEmpty();
+            var i = coord[0];
+            var j = coord[1];
+            setValue(i, j, random2or4())
+        }
+    }
+    else if (event.key == "ArrowDown"){
+        if(down() == 0)
+        {
+            console.log("Pas de mouvement et pas de fusion !");
+        }
+        else
+        {
+            var coord = getEmpty();
+            var i = coord[0];
+            var j = coord[1];
+            setValue(i, j, random2or4())
+        }
+    }
+    
 
 });
 //addEventListener est un gestionnaire d'événement
