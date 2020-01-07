@@ -26,6 +26,13 @@ function test3(){
 }
 
 
+function add_score(nb)
+{
+    var score = Number(document.getElementById("score").innerHTML);
+    document.getElementById("score").innerHTML = score + nb; 
+}
+
+
 //DEFI 12
 function test4(){
     case0 = document.getElementById("case0-0").innerHTML;
@@ -246,16 +253,19 @@ function test14(){
 
 //DEFI 26
 function moveLeft(i){
+    var hasChanged = 0;
     var tab = [getValue(i,0), getValue(i,1), getValue(i,2), getValue(i,3)]
     for (var k = 0; k < 4; k++){
         for (var j = 0; j <= 3; j++){
             if ((tab[j-1] == '*') && (tab[j] != '*')){
                 tab[j-1] = tab[j];
                 tab[j] = '*';
+                hasChanged++;
             }
         }
     }
     setRow(i, tab[0], tab[1], tab[2], tab[3])
+    return hasChanged;
 }
 
 
@@ -281,16 +291,19 @@ function setCol(j,a,b,c,d){
 
 
 function moveUp(j){
+    var hasChanged = 0;
     var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
     for (var k = 0; k < 4; k++){
         for (var i = 0; i <= 3; i++){
             if ((tab[i-1] == '*') && (tab[i] != '*')){
                 tab[i-1] = tab[i];
                 tab[i] = '*';
+                hasChanged++;
             }
         }
     }
     setCol(j, tab[0], tab[1], tab[2], tab[3])
+    return hasChanged;
 }
 
 
@@ -307,16 +320,19 @@ function test16(){
 
 
 function moveDown(j){
+    var hasChanged = 0;
     var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
     for (var k = 0; k < 4; k++){
         for (var i = 0; i <= 3; i++){
             if ((tab[i+1] == '*') && (tab[i] != '*')){
                 tab[i+1] = tab[i];
                 tab[i] = '*';
+                hasChanged++;
             }
         }
     }
     setCol(j, tab[0], tab[1], tab[2], tab[3])
+    return hasChanged;
 }
 
 
@@ -341,6 +357,7 @@ function fusionRight(i){
         for (var j = 3; j > 0; j--) {
             if (Number(tab[j-1]) == Number(tab[j])){
                 tab[j] = Number(tab[j]) + Number(tab[j-1]);
+                add_score(tab[j]);
                 tab[j-1] = '*';
                 setRow(i, tab[0], tab[1], tab[2], tab[3]);
                 moveRight(i);
@@ -373,16 +390,19 @@ function test18(){
 
 //DEFI 29
 function fusionLeft(i){
+    var hasChanged = 0;
     var tab = [getValue(i,3), getValue(i,2), getValue(i,1), getValue(i,0)];
     var l = tab.length;
     if (l != 0) {
         for (var j = 3; j > 0; j--) {
             if (Number(tab[j-1]) == Number(tab[j])){
                 tab[j] = Number(tab[j]) + Number(tab[j-1]);
+                add_score(tab[j]);
                 tab[j-1] = '*';
                 setRow(i, tab[3], tab[2], tab[1], tab[0]);
                 moveLeft(i);
                 tab = [getValue(i,3), getValue(i,2), getValue(i,1), getValue(i,0)];
+                hasChanged++;
             }
         }
     } 
@@ -392,6 +412,7 @@ function fusionLeft(i){
         }
     }
     setRow(i, tab[3], tab[2], tab[1], tab[0]);
+    return hasChanged;
 }
 
 
@@ -408,16 +429,19 @@ function test19(){
 
 //DEFI 30
 function fusionUp(j){
+    var hasChanged = 0;
     var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)];
     var l = tab.length;
     if (l != 0) {
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 3; i++) {
             if (Number(tab[i+1]) == Number(tab[i])){
                 tab[i] = Number(tab[i]) + Number(tab[i+1]);
+                add_score(tab[i]);
                 tab[i+1] = '*';
                 setCol(j, tab[0], tab[1], tab[2], tab[3]);
                 moveUp(j);
                 tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)];
+                hasChanged++;
             }
         }
     } 
@@ -427,6 +451,7 @@ function fusionUp(j){
         }
     }
     setCol(j, tab[0], tab[1], tab[2], tab[3]);
+    return hasChanged;
 }
 
 
@@ -443,16 +468,19 @@ function test20(){
 
 
 function fusionDown(j){
+    var hasChanged = 0;
     var tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
     var l = tab.length;
     if (l != 0) {
         for (var i = 3; i > 0; i--) {
             if (Number(tab[i-1]) == Number(tab[i])){
                 tab[i] = Number(tab[i]) + Number(tab[i-1]);
+                add_score(tab[i]);
                 tab[i-1] = '*';
                 setCol(j, tab[0], tab[1], tab[2], tab[3])
                 moveDown(j);
                 tab = [getValue(0,j), getValue(1,j), getValue(2,j), getValue(3,j)]
+                hasChanged++;
             }
         }
     } 
@@ -462,6 +490,7 @@ function fusionDown(j){
         }
     }
     setCol(j, tab[0], tab[1], tab[2], tab[3]);
+    return hasChanged;
 }
 
 
@@ -547,7 +576,7 @@ function down()
   var hasChanged = 0;
     for(var i=0; i<=3; i++)
     {
-       hasChanged += upi(i);
+       hasChanged += downi(i);
     }
   return hasChanged;
 }
