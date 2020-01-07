@@ -461,7 +461,7 @@ function fusionDown(j){
             tab.unshift('*');
         }
     }
-    setCol(j, tab[0], tab[1], tab[2], tab[3])
+    setCol(j, tab[0], tab[1], tab[2], tab[3]);
 }
 
 
@@ -475,7 +475,7 @@ function test21(){
     fusionDown(0);
 }
 
-
+//DEFI 31
 function righti(i){
   var hasChanged = 0;
   hasChanged += moveRight(i);
@@ -660,6 +660,7 @@ document.addEventListener('keydown', function(event) { //pour tout le document
     else if (event.key == "x"){
         test21();
     }
+    //DEFI 34
     else if (event.key == "ArrowRight"){
         if(right() == 0)
         {
