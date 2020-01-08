@@ -111,10 +111,10 @@ function test9(){
 //DEFI 18
 function setRow(i,a,b,c,d){
     var t = document.getElementById("tableau");
-        t.rows[i].cells[0].innerHTML = a;
-        t.rows[i].cells[1].innerHTML = b;
-        t.rows[i].cells[2].innerHTML = c;
-        t.rows[i].cells[3].innerHTML = d;
+    t.rows[i].cells[0].innerHTML = a;
+    t.rows[i].cells[1].innerHTML = b;
+    t.rows[i].cells[2].innerHTML = c;
+    t.rows[i].cells[3].innerHTML = d;       
 }
 
 function test10(){
@@ -183,6 +183,7 @@ function getRandom2or4(){
 
 //DEFI 22
 function startGame(){
+    init();
     getRandom2or4();
     getRandom2or4();
 }
