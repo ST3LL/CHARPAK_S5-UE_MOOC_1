@@ -5,38 +5,40 @@
         <script src="index.js"></script>
     </head>
     <body>
-        <h1 id="titre_principal">Ceci est un beau titre rouge !</h1>
+        <h1 id="titre_principal">Jeu 2048</h1>
         <section>
             <article>
+                <button onclick="startGame();"> Recommencer </button>
                 <table id="tableau">
-                    <caption>Titre du tableau</caption>
                     <tr>
-                        <td id="case0-0">*</td>
-                        <td id="case1-0">*</td>
-                        <td id="case2-0">*</td>
-                        <td id="case3-0">*</td>
+                        <td id="case0-0"></td>
+                        <td id="case1-0"></td>
+                        <td id="case2-0"></td>
+                        <td id="case3-0"></td>
                     </tr>
                     <tr>
-                        <td id="case0-1">$</td>
-                        <td id="case1-1">$</td>
-                        <td id="case2-1">$</td>
-                        <td id="case3-1">$</td>
+                        <td id="case0-1"></td>
+                        <td id="case1-1"></td>
+                        <td id="case2-1"></td>
+                        <td id="case3-1"></td>
                     </tr>
                     <tr>
-                        <td id="case0-2">§</td>
-                        <td id="case1-2">§</td>
-                        <td id="case2-2">§</td>
-                        <td id="case3-2">§</td>
+                        <td id="case0-2"></td>
+                        <td id="case1-2"></td>
+                        <td id="case2-2"></td>
+                        <td id="case3-2"></td>
                     </tr>
                     <tr>
-                        <td id="case0-3">#</td>
-                        <td id="case1-3">#</td>
-                        <td id="case2-3">#</td>
-                        <td id="case3-3">#</td>
+                        <td id="case0-3"></td>
+                        <td id="case1-3"></td>
+                        <td id="case2-3"></td>
+                        <td id="case3-3"></td>
                     </tr>
                 </table>
             <br>
-            <p>Score = </p><div id="score">0</div>
+            <div id="conteneur">
+            <p> Score </p><div id="score">0</div>
+            </div>
             </article>
             <aside>
                 <p>Cette page html comprend tous les défis à réaliser avant de réaliser le jeu 2048. Vous trouverz <a href="https://github.com/tinou99/CHARPAK-UE_MOOC_1">ici</a> un lien vers le github comprenant des informations complémentaires.</p>
