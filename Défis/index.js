@@ -110,11 +110,10 @@ function test9(){
 
 //DEFI 18
 function setRow(i,a,b,c,d){
-    var t = document.getElementById("tableau");
-    t.rows[i].cells[0].innerHTML = a;
-    t.rows[i].cells[1].innerHTML = b;
-    t.rows[i].cells[2].innerHTML = c;
-    t.rows[i].cells[3].innerHTML = d;       
+    setValue(i,0,a); 
+    setValue(i,1,b);
+    setValue(i,2,c);
+    setValue(i,3,d);        
 }
 
 function test10(){
